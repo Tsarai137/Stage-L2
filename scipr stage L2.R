@@ -100,9 +100,9 @@ conditionnal_pvalue_under_null = function(n,n0.,n.0,b){
    vect_repE=ecdf(vect_Bpval)
    vect_repF = unique(vect_repF)
    par(mfrow=c(1,2))
-   plot(support,vect_pval,type='l')
-   lines(vect_Bpval,col='red',type='p')
-   lines(support,runif(length(support), min = 0, max = 1),type="p",col="blue")
+   #plot(support,vect_pval,type='l')
+   plot(vect_Bpval,col='red',type='p')
+   lines(1:b,runif(length(1:b), min = 0, max = 1),type="p",col="blue",alpha = 0.1)
    f = stepfun(rev(vect_pval), c(0, vect_repF))
    plot(c(0,1), c(0,1),type="n",xlab="t",ylab="F(t)")
    uniform = punif(support, min = 0, max = 1, lower.tail = TRUE, log.p = FALSE)
@@ -110,7 +110,9 @@ conditionnal_pvalue_under_null = function(n,n0.,n.0,b){
    lines(vect_repE,col="pink")
    lines(f,col="green")
  }
-conditionnal_pvalue_under_null(100,40,40,10000)
+conditionnal_pvalue_under_null(100,40,40,1000)
 ?stepfun 
 ?ecdf
-
+?runif
+?lines
+?plot
